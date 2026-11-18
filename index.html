@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#060b08" />
+    <meta name="description" content="วางลิงก์ TikTok, YouTube หรือ Facebook เพื่อดาวน์โหลดวิดีโอ MP4 หรือเสียง MP3" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="%%PUBLIC_URL%%/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="th_TH" />
+    <meta property="og:site_name" content="โหลดดี" />
+    <meta property="og:title" content="โหลดดี — ดาวน์โหลดวิดีโอและเสียง" />
+    <meta property="og:description" content="วางลิงก์ TikTok, YouTube หรือ Facebook แล้วเลือกดาวน์โหลดเป็น MP4 หรือ MP3" />
+    <meta property="og:url" content="%%PUBLIC_URL%%/" />
+    <meta name="twitter:card" content="summary" />
+    <title>โหลดดี — เก็บคลิปโปรดไว้ได้ทุกที่</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=5" />
+  </head>
+  <body>
+    <div class="night-scene" aria-hidden="true">
+      <canvas id="valley-canvas"></canvas>
+      <div class="scene-vignette"></div>
+      <div class="scene-grain"></div>
+    </div>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="โหลดดี หน้าแรก">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 3v16m0 0 6-6m-6 6-6-6"/><path d="M6 20v5a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-5"/></svg></span>
+        <span>โหลดดี<span class="brand-dot">.</span></span>
+      </a>
+      <nav class="nav-links" aria-label="เมนูหลัก">
+        <a href="#how">วิธีใช้งาน</a>
+        <a href="#supported">แพลตฟอร์ม</a>
+        <a class="donate-nav" href="#donate">โดเนท</a>
+        <a class="nav-pill" href="#downloader">เริ่มดาวน์โหลด <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" id="downloader">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-dot"></span> คัดลอก · วาง · เก็บไว้</div>
+          <h1>คลิปโปรด<br class="mobile-break" />ไปกับคุณ</h1>
+          <p class="hero-desc">ช่วงเวลาที่ชอบ เก็บไว้ดูได้อีกครั้ง<br />วางลิงก์ แล้วเลือกไฟล์ในแบบของคุณ</p>
+        </div>
+
+        <form class="download-panel" id="download-form" novalidate>
+          <div class="panel-topline">
+            <label class="field-label" for="url-input">ลิงก์วิดีโอ</label>
+            <span class="panel-hint" id="supported">รองรับ YouTube · TikTok · Facebook</span>
+          </div>
+          <div class="url-field" id="url-field">
+            <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3A5 5 0 0 0 13 2.93l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3A5 5 0 0 0 11 21.07l1.71-1.71"/></svg>
+            <input id="url-input" name="url" type="url" inputmode="url" placeholder="วางลิงก์วิดีโอที่นี่..." autocomplete="url" aria-describedby="url-hint form-status" />
+            <button class="paste-btn" type="button" id="paste-button">วางลิงก์</button>
+          </div>
+          <div class="panel-bottomline">
+            <fieldset class="format-fieldset">
+              <legend class="sr-only">เลือกรูปแบบไฟล์</legend>
+              <div class="format-options">
+                <label class="format-option selected" data-format="mp4">
+                  <input type="radio" name="format" value="mp4" checked />
+                  <span class="format-indicator video-indicator" aria-hidden="true"></span>
+                  <span class="format-copy"><strong>วิดีโอ</strong><small>MP4</small></span>
+                  <span class="radio-dot" aria-hidden="true"></span>
+                </label>
+                <label class="format-option" data-format="mp3">
+                  <input type="radio" name="format" value="mp3" />
+                  <span class="format-indicator audio-indicator" aria-hidden="true"></span>
+                  <span class="format-copy"><strong>เสียง</strong><small>MP3</small></span>
+                  <span class="radio-dot" aria-hidden="true"></span>
+                </label>
+              </div>
+            </fieldset>
+            <button class="submit-btn" type="submit" aria-label="เตรียมดาวน์โหลด"><span class="submit-label">เตรียมดาวน์โหลด</span><span class="submit-arrow" aria-hidden="true">→</span></button>
+          </div>
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+        </form>
+        <span class="hero-note"><span class="note-star">✳</span> สำหรับวิดีโอที่คุณมีสิทธิ์บันทึก</span>
+      </section>
+
+      <div class="corner-controls">
+        <a class="wander-link" href="#how"><span>เลื่อนเพื่อเดินชม</span><i></i><span class="wander-arrow" aria-hidden="true">↓</span></a>
+        <span class="corner-divider" aria-hidden="true"></span>
+        <button class="sound-button" id="sound-button" type="button" aria-pressed="false" aria-label="เปิดเสียงบรรยากาศ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5Z"/><path class="sound-waves" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="sound-x" d="m16 10 4 4m0-4-4 4"/></svg></button>
+      </div>
+    </main>
+
+    <section class="how-section" id="how">
+      <div class="section-title"><span class="section-label">ง่ายในสามจังหวะ</span><h2>วางลิงก์ เลือกไฟล์ แล้วเก็บไว้</h2></div>
+      <div class="steps-grid">
+        <article class="step-card"><span class="step-number">01</span><h3>คัดลอกลิงก์</h3><p>เลือกคลิปจากแพลตฟอร์มที่รองรับ แล้วคัดลอกที่อยู่เว็บ</p></article>
+        <article class="step-card"><span class="step-number">02</span><h3>เลือกรูปแบบ</h3><p>เลือกวิดีโอ MP4 หรือดึงเฉพาะเสียงเป็น MP3</p></article>
+        <article class="step-card"><span class="step-number">03</span><h3>บันทึกไว้</h3><p>ไฟล์จะถูกเตรียมแล้วส่งกลับมาให้ดาวน์โหลดลงเครื่อง</p></article>
+      </div>
+      <div class="donate-card" id="donate">
+        <div class="donate-copy">
+          <span class="donate-kicker"><span aria-hidden="true">✳</span> สนับสนุนโปรเจกต์</span>
+          <h2>เลี้ยงกาแฟทีมเรา ☕</h2>
+          <p>ถ้าเว็บนี้มีประโยชน์ ร่วมสนับสนุนค่าดูแลเว็บได้ตามสะดวก<br class="donate-break" /> สแกน QR หรือคัดลอกเบอร์ PromptPay</p>
+          <div class="promptpay-number"><span>พร้อมเพย์ · เบอร์โทรศัพท์</span><strong>065-686-6237</strong></div>
+          <button class="copy-promptpay" id="copy-promptpay" type="button"><span aria-hidden="true">▢</span> คัดลอกเบอร์พร้อมเพย์</button>
+          <p class="donate-status" id="donate-status" role="status" aria-live="polite"></p>
+        </div>
+        <div class="donate-qr-wrap">
+          <div class="donate-qr"><img src="assets/promptpay-qr.svg" alt="QR PromptPay สำหรับสนับสนุนที่เบอร์ 065-686-6237" width="240" height="240" /></div>
+          <span>สแกนด้วยแอปธนาคาร</span>
+          <small>ไม่กำหนดยอด · ใส่จำนวนเงินได้เอง</small>
+        </div>
+      </div>
+      <footer class="footer"><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 3v16m0 0 6-6m-6 6-6-6"/><path d="M6 20v5a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-5"/></svg></span><span>โหลดดี<span class="brand-dot">.</span></span></a><p>ดาวน์โหลดเฉพาะเนื้อหาที่คุณเป็นเจ้าของหรือได้รับอนุญาตให้บันทึก</p><span class="copyright">© 2026 โหลดดี</span></footer>
+    </section>
+
+    <script src="app.js?v=2"></script>
+  </body>
+</html>

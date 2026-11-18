@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.venv/
+chrome-check-profile/
+preview*.png
+npm-debug.log*
